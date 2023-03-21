@@ -42,20 +42,8 @@ console.log(itemsClass[indexItem]);
 // incremento
 // aggiungo
 const next = document.getElementById('up-arrow');
-next.addEventListener('click', function () {
-    // parto da indice 0
-    if (indexItem < ((itemsClass.length) - 1)) {
-        itemsClass[indexItem].classList.remove("active");
-        indexItem++;
-        itemsClass[indexItem].classList.add("active");
-    } else {
-        itemsClass[indexItem].classList.remove("active");
-        indexItem = 0;
-        itemsClass[indexItem].classList.add("active")
-    }
-
-})
-// aggiungo funzione di autoplay
+next.addEventListener('click', nextPhoto,timeOut)
+ 
 function nextPhoto (){
     if (indexItem < ((itemsClass.length) - 1)) {
         itemsClass[indexItem].classList.remove("active");
@@ -67,16 +55,9 @@ function nextPhoto (){
         itemsClass[indexItem].classList.add("active")
     }
    
-    
+   
 }
- const autoPlay=setInterval(nextPhoto,3000);
- console.log(autoPlay);
-
-
-// uguale su down-arrow
-const prev = document.getElementById('down-arrow');
-prev.addEventListener('click', function () {
-
+function prevPhoto (){
     if (indexItem > 0) {
         itemsClass[indexItem].classList.remove("active");
         indexItem--;
@@ -89,9 +70,22 @@ prev.addEventListener('click', function () {
 
     }
 
+}
+function timeOut (){
+    clearInterval(autoPlay);
+ }
+
+ const autoPlay=setInterval(nextPhoto,3000);
+//  const stopAutoPlay= setTimeout(timeOut,3000);
+
+ 
 
 
-})
+
+
+// uguale su down-arrow
+const prev = document.getElementById('down-arrow');
+prev.addEventListener('click', prevPhoto,timeOut)
 
 
 
